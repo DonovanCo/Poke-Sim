@@ -48,7 +48,11 @@ public abstract class Pokemon {
 		this.myLegendStatus = myLegendStatus;
 	}
 
-	public abstract void cries();
+	public void cries()
+	{
+		System.out.println("The pokemon does not say a word.");
+	}
+	
 	public abstract void useMove();
 	
 	public void faint()

@@ -1,5 +1,5 @@
 
-public class Moltres extends Firetype implements LegendStatus {
+public class Moltres extends Firetype {
 	
 	public Moltres()
 	{

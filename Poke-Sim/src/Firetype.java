@@ -8,11 +8,8 @@ public abstract class Firetype extends Pokemon {
 	
 	public void useMove()
 	{
-		System.out.println(name+" used Ember!");
+		System.out.println(name+" used Fire Blast!");
 	}
 	
-	public void cries()
-	{
-		System.out.println("The pokemon does not say a word.");
-	}
+	
 }

@@ -10,4 +10,9 @@ public abstract class Watertype extends Pokemon{
 	{
 		System.out.println(name+" used Hydro Pump!");
 	}
+	
+	public void cries()
+	{
+		System.out.println(name+" says \""+cry+"\"!");
+	}
 }

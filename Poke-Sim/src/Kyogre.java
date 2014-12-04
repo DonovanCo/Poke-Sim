@@ -9,8 +9,5 @@ public class Kyogre extends Watertype {
 		legendaryStatus=true;
 	}
 	
-	public void cries()
-	{
-		System.out.println(name+" says \""+cry+"\"!");
-	}
+	
 }

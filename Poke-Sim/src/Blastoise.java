@@ -9,8 +9,4 @@ public class Blastoise extends Watertype{
 		legendaryStatus=false;
 	}
 	
-	public void cries()
-	{
-		System.out.println(name+" says \""+cry+"\"!");
-	}
 }

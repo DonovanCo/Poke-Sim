@@ -6,11 +6,14 @@ public class BattleRunner {
 	
 	public static void run()
 	{
-		Pokemon [] pokedex = new Pokemon[4];
+		Pokemon [] pokedex = new Pokemon[7];
 		pokedex[0]= new Blaziken();
 		pokedex[1]= new Moltres();
 		pokedex[2]= new Blastoise();
-		pokedex[3]= new Kyogre();
+		pokedex[3]= new Magikarp();
+		pokedex[4]= new Kyogre();
+		pokedex[5]= new Torterra();
+		pokedex[6]= new Virizion();
 		
 		System.out.println("Welcome to Poke-Sim! \nA Pokemon battle simulator based on a pokemon's typing and legendary status.\nBegin by choosing a Pokemon.");
 		for (int i = 0; i < pokedex.length; i++)
@@ -48,6 +51,16 @@ public class BattleRunner {
 			System.out.println("It was a tough battle but you came out on top.");
 		}
 		
+		else if(contestants[0].getName().equals("Magikarp"))
+		{
+			contestants[0].faint();
+		}
+		
+		else if(contestants[1].getName().equals("Magikarp"))
+		{
+			contestants[1].faint();
+		}
+		
 		else if(contestants[0].isLegendaryStatus()==false&&contestants[1].isLegendaryStatus()==true)
 		{
 			System.out.println("Your oppent blew you out of the water!");
@@ -66,6 +79,27 @@ public class BattleRunner {
 		else if(contestants[0].getType().equals("water")&&contestants[1].getType().equals("fire"))
 		{
 			contestants[1].faint();
+		}
+		
+		else if(contestants[0].getType().equals("fire")&&contestants[1].getType().equals("grass"))
+		{
+			contestants[1].faint();
+		}
+		
+		else if(contestants[0].getType().equals("grass")&&contestants[1].getType().equals("fire"))
+		{
+			System.out.println(contestants[0].getName()+" barely scratches it!");
+			contestants[0].faint();
+		}
+		
+		else if(contestants[0].getType().equals("grass")&&contestants[1].getType().equals("water"))
+		{
+			contestants[1].faint();
+		}
+		
+		else if(contestants[0].getType().equals("water")&&contestants[1].getType().equals("grass"))
+		{
+			contestants[0].faint();
 		}
 		
 		else if(contestants[0].getType().equals(contestants[1].getType()))
