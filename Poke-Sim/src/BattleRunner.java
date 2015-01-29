@@ -50,7 +50,7 @@ public class BattleRunner {
 			System.out.println("You win by default.");
 			contestants[1].faint();
 		}
-		else if(contestants[0].isLegendaryStatus()==true&&contestants[1].isLegendaryStatus()==true)
+		else if(contestants[0].isLegendaryStatus()==true&&contestants[1].isLegendaryStatus()==true) 
 		{
 			contestants[1].faint();
 			System.out.println("It was a tough battle but you came out on top.");
