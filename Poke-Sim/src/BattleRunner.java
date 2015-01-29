@@ -2,9 +2,10 @@ import java.util.Scanner;
 public class BattleRunner {
 	
 	static Scanner choice = new Scanner(System.in);
+	static boolean autoWin = false;
 	
 	
-	public static void run()
+	public static void runOne()
 	{
 		Pokemon [] pokedex = new Pokemon[7];
 		pokedex[0]= new Blaziken();
@@ -44,8 +45,12 @@ public class BattleRunner {
 		contestants[0].useMove();
 		contestants[1].useMove();
 		
-		//error on this line.
-		if(contestants[0].isLegendaryStatus()==true&&contestants[1].isLegendaryStatus()==true)
+		if(autoWin==true)
+		{
+			System.out.println("You win by default.");
+			contestants[1].faint();
+		}
+		else if(contestants[0].isLegendaryStatus()==true&&contestants[1].isLegendaryStatus()==true)
 		{
 			contestants[1].faint();
 			System.out.println("It was a tough battle but you came out on top.");
@@ -108,11 +113,46 @@ public class BattleRunner {
 		}
 		
 	}
+	
+	public static void getCodes()
+	{
+		System.out.println("Would you like to enter cheat codes?(y/n)");
+		String answer = choice.next();
+		if(answer.equals("y"))
+		{
+			System.out.println("Enter your code now.");
+			String code = choice.next();
+			if(code.equals("^^VV<><>ba"))
+			{
+				autoWin=true;
+				System.out.println("Cheat Activated: AutoWin");
+			}
+		}
+	}
+	
+	public static void askPref()
+	{
+		System.out.println("Would you like 1.)normal or 2.)JPannel output");
+		int version = choice.nextInt();
+		if(version==1)
+		{
+			runOne();
+		}
+		else if(version==2)
+		{
+			System.out.println("That does not work yet. Sorry.");
+		}
+		else
+		{
+			System.out.println("That is not an option.");
+		}
+	}
 
 
 	public static void main(String[] args) {
 		
-		run();
+		getCodes();
+		askPref();
 
 	}
 
