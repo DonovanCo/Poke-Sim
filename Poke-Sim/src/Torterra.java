@@ -7,5 +7,6 @@ public class Torterra extends Grasstype {
 		cry="Tor";
 		myLegendStatus = (LegendStatus) new NonLegendary();
 		legendaryStatus=false;
+		pic = "torterra.png";
 	}
 }

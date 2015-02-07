@@ -7,6 +7,7 @@ public class Blastoise extends Watertype{
 		cry="Blast";
 		myLegendStatus = (LegendStatus) new NonLegendary();
 		legendaryStatus=false;
+		pic = "blastoise.png";
 	}
 	
 }

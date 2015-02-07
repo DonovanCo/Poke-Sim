@@ -7,6 +7,7 @@ public class Kyogre extends Watertype {
 		cry="Ky";
 		myLegendStatus = (LegendStatus) new Legendary();
 		legendaryStatus=true;
+		pic = "kyogre.jpg";
 	}
 	
 	

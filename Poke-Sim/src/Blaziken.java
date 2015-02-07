@@ -7,6 +7,7 @@ public class Blaziken extends Firetype {
 		name="Blaziken";
 		myLegendStatus = (LegendStatus) new NonLegendary();
 		legendaryStatus=false;
+		pic = "blazekin.png";
 	}
 
 	public void cries()

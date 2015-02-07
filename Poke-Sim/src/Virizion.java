@@ -7,5 +7,6 @@ public class Virizion extends Grasstype {
 		cry="Virizi";
 		myLegendStatus = (LegendStatus) new Legendary();
 		legendaryStatus=true;
+		pic = "virizion.png";
 	}
 }

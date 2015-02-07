@@ -7,6 +7,7 @@ public class Moltres extends Firetype {
 		cry="Mol";
 		myLegendStatus = (LegendStatus) new Legendary();
 		legendaryStatus=true;
+		pic="moltres.png";
 	}
 	public void cries()
 	{

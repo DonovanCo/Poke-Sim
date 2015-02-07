@@ -7,6 +7,7 @@ public class Magikarp extends Watertype{
 		cry="*flops*";
 		myLegendStatus = (LegendStatus) new NonLegendary();
 		legendaryStatus=false;
+		pic = "magikarp.png";
 	}
 	
 	public void useMove()

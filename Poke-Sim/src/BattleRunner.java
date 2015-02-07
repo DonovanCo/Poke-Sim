@@ -1,51 +1,58 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
 public class BattleRunner {
 	
 	static Scanner choice = new Scanner(System.in);
-	static boolean autoWin = false;
+	static int cheat;
+	static ArrayList <Pokemon> pokedex = new ArrayList<Pokemon>();
+	static Pokemon[] contestants = new Pokemon[2];
 	
-	
-	public static void runOne()
+	public static void makeList()
 	{
-		Pokemon [] pokedex = new Pokemon[7];
-		pokedex[0]= new Blaziken();
-		pokedex[1]= new Moltres();
-		pokedex[2]= new Blastoise();
-		pokedex[3]= new Magikarp();
-		pokedex[4]= new Kyogre();
-		pokedex[5]= new Torterra();
-		pokedex[6]= new Virizion();
+		
+		pokedex.add(new Blaziken());
+	    pokedex.add(new Charizard());
+		pokedex.add(new Moltres());
+		pokedex.add(new Blastoise());
+		pokedex.add(new Magikarp());
+		pokedex.add(new Kyogre());
+		pokedex.add(new Torterra());
+		pokedex.add(new Virizion());
+	}
+	
+	public static void runOne(int a)
+	{
 		
 		System.out.println("Welcome to Poke-Sim! \nA Pokemon battle simulator based on a pokemon's typing and legendary status.\nBegin by choosing a Pokemon.");
-		for (int i = 0; i < pokedex.length; i++)
+		for (int i = 0; i < pokedex.size(); i++)
 		{
-			System.out.println((i+1)+".)"+pokedex[i].getName());
+			System.out.println((i+1)+".)"+pokedex.get(i).getName());
 		}
 		int poke1=(choice.nextInt()-1);
-		pokedex[poke1].giveInfo();
-		pokedex[poke1].myLegendStatus.checkLegendary();
-		pokedex[poke1].cries();
+		pokedex.get(poke1).giveInfo();
+		pokedex.get(poke1).myLegendStatus.checkLegendary();
+		pokedex.get(poke1).cries();
 		
 		
 		System.out.println("Which pokemon will be your opponent?");
-		for (int i = 0; i < pokedex.length; i++)
+		for (int i = 0; i < pokedex.size(); i++)
 		{
-			System.out.println((i+1)+".)"+pokedex[i].getName());
+			System.out.println((i+1)+".)"+pokedex.get(i).getName());
 		}
 		int poke2 = (choice.nextInt()-1);
-		pokedex[poke2].giveOppInfo();
-		pokedex[poke2].myLegendStatus.checkLegendary();
-		pokedex[poke2].cries();
+		pokedex.get(poke2).giveOppInfo();
+		pokedex.get(poke2).myLegendStatus.checkLegendary();
+		pokedex.get(poke2).cries();
 		
-		Pokemon[] contestants = new Pokemon[2];
-		contestants[0]=pokedex[poke1];
-		contestants[1]=pokedex[poke2];
+		contestants[0]=pokedex.get(poke1);
+		contestants[1]=pokedex.get(poke2);
 		
 		
 		contestants[0].useMove();
 		contestants[1].useMove();
 		
-		if(autoWin==true)
+		if(a==1)
 		{
 			System.out.println("You win by default.");
 			contestants[1].faint();
@@ -114,7 +121,18 @@ public class BattleRunner {
 		
 	}
 	
-	public static void getCodes()
+	public static void makeCustom()
+	{
+		System.out.println("What will your pokemon,s name be?");
+		String nameCus = choice.next();
+		System.out.println("What will "+nameCus+",s cry be?");
+		String cryCus = choice.next();
+		System.out.println("Finally, what type is your pokemon? 1.)Fire 2.)Grass 3.)Water");
+		int typeCus = choice.nextInt();
+		
+	}
+	
+	public static int getCodes()
 	{
 		System.out.println("Would you like to enter cheat codes?(y/n)");
 		String answer = choice.next();
@@ -124,35 +142,38 @@ public class BattleRunner {
 			String code = choice.next();
 			if(code.equals("^^VV<><>ba"))
 			{
-				autoWin=true;
 				System.out.println("Cheat Activated: AutoWin");
+				return 1;
 			}
 		}
+		return 0;
 	}
 	
 	public static void askPref()
 	{
-		System.out.println("Would you like 1.)normal or 2.)JPannel output");
+		System.out.println("Would you like 1.)normal or 2.)Graphics output?");
 		int version = choice.nextInt();
 		if(version==1)
 		{
-			runOne();
+			cheat  = getCodes();
+			runOne(cheat);
 		}
 		else if(version==2)
 		{
-			System.out.println("That does not work yet. Sorry.");
+			PicClass.jGetCodes();
 		}
 		else
 		{
 			System.out.println("That is not an option.");
 		}
 	}
-
-
+	
 	public static void main(String[] args) {
 		
-		getCodes();
+		makeList();
 		askPref();
+		
+		
 
 	}
 
