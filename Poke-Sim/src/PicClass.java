@@ -137,7 +137,7 @@ public class PicClass extends JFrame
 	public static void jTypeCodes()
 	{
 	final JFrame frame = new JFrame("Cheat Codes");
-	frame.setSize(400, 100);
+	frame.setSize(400, 150);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setResizable(false);
 	frame.setLocationRelativeTo(null); //Sets JPanel to center of screen 
@@ -147,7 +147,7 @@ public class PicClass extends JFrame
 	
 	JButton button = new JButton("Enter");
 	final JLabel words = new JLabel("Enter your cheat code.");
-	final JTextPane input = new JTextPane();
+	final JTextField input = new JTextField(20);
 	
 	final JPanel panel = new JPanel();
 	panel.setBackground(Color.white);
@@ -175,7 +175,7 @@ public class PicClass extends JFrame
 	public static void jResults()
 	{
 	final JFrame frame = new JFrame("Results");
-	frame.setSize(1250, 650);
+	frame.setSize(550, 650);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setResizable(false);
 	frame.setLocationRelativeTo(null); //Sets JPanel to center of screen 
@@ -184,15 +184,88 @@ public class PicClass extends JFrame
 	
 	JButton button = new JButton("Okay");
 	final JLabel words = new JLabel("VS.");
-	JLabel imgLabel1 = new JLabel(new ImageIcon(BattleRunner.contestants[0].getPic()));
-	JLabel imgLabel2 = new JLabel(new ImageIcon(BattleRunner.contestants[1].getPic()));
+	JLabel imgLabel1 = new JLabel(new ImageIcon(BattleRunner.contestants[0].getPic()), JLabel.LEFT);
+	imgLabel1.setBorder(BorderFactory.createTitledBorder(BattleRunner.contestants[0].getName()));
+	JLabel imgLabel2 = new JLabel(new ImageIcon(BattleRunner.contestants[1].getPic()), JLabel.RIGHT);
+	imgLabel2.setBorder(BorderFactory.createTitledBorder(BattleRunner.contestants[1].getName()));
+	String winner = "";
+	
+	if(cheat==1)
+	{
+		winner = BattleRunner.contestants[1].faint();
+	}
+	else if(BattleRunner.contestants[0].isLegendaryStatus()==true&&BattleRunner.contestants[1].isLegendaryStatus()==true) 
+	{
+		winner = BattleRunner.contestants[1].faint();
+	}
+	
+	else if(BattleRunner.contestants[0].getName().equals("Magikarp"))
+	{
+		winner = BattleRunner.contestants[0].faint();
+	}
+	
+	else if(BattleRunner.contestants[1].getName().equals("Magikarp"))
+	{
+		winner = BattleRunner.contestants[1].faint();
+	}
+	
+	else if(BattleRunner.contestants[0].isLegendaryStatus()==false&&BattleRunner.contestants[1].isLegendaryStatus()==true)
+	{
+		winner = ("Your oppent blew you out of the water!");
+	}
+	
+	else if(BattleRunner.contestants[0].isLegendaryStatus()==true&&BattleRunner.contestants[1].isLegendaryStatus()==false)
+	{
+		winner = ("You overpowered your opponent! Hurray!!");
+	}
+	
+	else if(BattleRunner.contestants[0].getType().equals("fire")&&BattleRunner.contestants[1].getType().equals("water"))
+	{
+		winner = BattleRunner.contestants[0].faint();
+	}
+	
+	else if(BattleRunner.contestants[0].getType().equals("water")&&BattleRunner.contestants[1].getType().equals("fire"))
+	{
+		winner = BattleRunner.contestants[1].faint();
+	}
+	
+	else if(BattleRunner.contestants[0].getType().equals("fire")&&BattleRunner.contestants[1].getType().equals("grass"))
+	{
+		winner = BattleRunner.contestants[1].faint();
+	}
+	
+	else if(BattleRunner.contestants[0].getType().equals("grass")&&BattleRunner.contestants[1].getType().equals("fire"))
+	{
+		winner = BattleRunner.contestants[0].faint();
+	}
+	
+	else if(BattleRunner.contestants[0].getType().equals("grass")&&BattleRunner.contestants[1].getType().equals("water"))
+	{
+		winner = BattleRunner.contestants[1].faint();
+	}
+	
+	else if(BattleRunner.contestants[0].getType().equals("water")&&BattleRunner.contestants[1].getType().equals("grass"))
+	{
+		winner = BattleRunner.contestants[0].faint();
+	}
+	
+	else if(BattleRunner.contestants[0].getType().equals(BattleRunner.contestants[1].getType()))
+	{
+		winner = ("Both pokemon faint because they are equally matched!");
+	}
+	
+
+	final JLabel outcome = new JLabel(winner);
+	outcome.setVerticalAlignment(SwingConstants.BOTTOM);
+	button.setVerticalAlignment(SwingConstants.BOTTOM);
 	
 	final JPanel panel = new JPanel();
 	panel.setBackground(Color.white);
 	frame.add(panel);
 	panel.add(imgLabel1);
-	panel.add(imgLabel2);
 	panel.add(words);
+	panel.add(imgLabel2);
+	panel.add(outcome);
 	panel.add(button);
 	button.addActionListener(new ActionListener()
 		{

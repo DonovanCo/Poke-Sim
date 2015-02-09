@@ -7,6 +7,7 @@ public class BattleRunner {
 	static int cheat;
 	static ArrayList <Pokemon> pokedex = new ArrayList<Pokemon>();
 	static Pokemon[] contestants = new Pokemon[2];
+	static String outcome;
 	
 	public static void makeList()
 	{
@@ -55,22 +56,22 @@ public class BattleRunner {
 		if(a==1)
 		{
 			System.out.println("You win by default.");
-			contestants[1].faint();
+			outcome = contestants[1].faint();
 		}
 		else if(contestants[0].isLegendaryStatus()==true&&contestants[1].isLegendaryStatus()==true) 
 		{
-			contestants[1].faint();
+			outcome = contestants[1].faint();
 			System.out.println("It was a tough battle but you came out on top.");
 		}
 		
 		else if(contestants[0].getName().equals("Magikarp"))
 		{
-			contestants[0].faint();
+			outcome = contestants[0].faint();
 		}
 		
 		else if(contestants[1].getName().equals("Magikarp"))
 		{
-			contestants[1].faint();
+			outcome = contestants[1].faint();
 		}
 		
 		else if(contestants[0].isLegendaryStatus()==false&&contestants[1].isLegendaryStatus()==true)
@@ -85,33 +86,33 @@ public class BattleRunner {
 		
 		else if(contestants[0].getType().equals("fire")&&contestants[1].getType().equals("water"))
 		{
-			contestants[0].faint();
+			outcome = contestants[0].faint();
 		}
 		
 		else if(contestants[0].getType().equals("water")&&contestants[1].getType().equals("fire"))
 		{
-			contestants[1].faint();
+			outcome = contestants[1].faint();
 		}
 		
 		else if(contestants[0].getType().equals("fire")&&contestants[1].getType().equals("grass"))
 		{
-			contestants[1].faint();
+			outcome = contestants[1].faint();
 		}
 		
 		else if(contestants[0].getType().equals("grass")&&contestants[1].getType().equals("fire"))
 		{
 			System.out.println(contestants[0].getName()+" barely scratches it!");
-			contestants[0].faint();
+			outcome  = contestants[0].faint();
 		}
 		
 		else if(contestants[0].getType().equals("grass")&&contestants[1].getType().equals("water"))
 		{
-			contestants[1].faint();
+			outcome = contestants[1].faint();
 		}
 		
 		else if(contestants[0].getType().equals("water")&&contestants[1].getType().equals("grass"))
 		{
-			contestants[0].faint();
+			outcome = contestants[0].faint();
 		}
 		
 		else if(contestants[0].getType().equals(contestants[1].getType()))
@@ -172,6 +173,7 @@ public class BattleRunner {
 		
 		makeList();
 		askPref();
+		System.out.println(outcome);
 		
 		
 

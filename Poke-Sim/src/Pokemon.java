@@ -64,9 +64,9 @@ public abstract class Pokemon {
 	
 	public abstract void useMove();
 	
-	public void faint()
+	public String faint()
 	{
-		System.out.println(name+" fainted!");
+		return (name+" fainted!");
 	}
 	
 	public void giveInfo()

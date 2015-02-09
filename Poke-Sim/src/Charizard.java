@@ -7,7 +7,7 @@ public class Charizard extends Firetype {
 		name="Gabe's Charizard";
 		myLegendStatus = (LegendStatus) new NonLegendary();
 		legendaryStatus=false;
-		pic = "charizard";
+		pic = "charizard.png";
 	}
 	public void cries()
 	{
