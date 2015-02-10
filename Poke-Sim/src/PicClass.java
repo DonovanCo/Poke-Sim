@@ -279,4 +279,84 @@ public class PicClass extends JFrame
 	
 	frame.setVisible(true);
 	}
+	
+	public static void jAskCus()
+		{
+		final JFrame frame = new JFrame("Custom Pokemon Creator");
+		frame.setSize(400, 100);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null); //Sets JPanel to center of screen 
+		
+		JButton button = new JButton("Yes");
+		JButton button2 = new JButton("No");
+		final JLabel words = new JLabel("Do you wish to create a new pokemon?");
+		
+		final JPanel panel = new JPanel();
+		panel.setBackground(Color.white);
+		frame.add(panel);
+		panel.add(words);
+		panel.add(button);
+		panel.add(button2);
+		button.addActionListener(new ActionListener()
+			{
+			public void actionPerformed(ActionEvent arg0) 
+				{
+				jMakeCus();
+				frame.dispose();
+				
+				}
+			});
+		button2.addActionListener(new ActionListener()
+			{
+			public void actionPerformed(ActionEvent arg0) 
+				{
+				jGetCodes();
+				frame.dispose();
+				
+				}
+			});
+		
+		frame.setVisible(true);
+		}
+	
+	public static void jMakeCus()
+		{
+		final JFrame frame = new JFrame("Pokemon Selector 1");
+		frame.setSize(400, 100);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null); //Sets JPanel to center of screen 
+		
+		String[] preMadeArray = new String[BattleRunner.pokedex.size()];
+		for(int g  = 0; g<BattleRunner.pokedex.size(); g++)
+			{
+			preMadeArray[g] = BattleRunner.pokedex.get(g).getName(); 
+			}
+		
+		
+		JButton button = new JButton("Choose");
+		final JComboBox<String> dropdown = new JComboBox<String>(preMadeArray);
+		final JLabel words = new JLabel("Choose your pokemon.");
+		
+		final JPanel panel = new JPanel();
+		panel.setBackground(Color.white);
+		frame.add(panel);
+		panel.add(words);
+		panel.add(dropdown);
+		panel.add(button);
+		button.addActionListener(new ActionListener()
+			{
+			public void actionPerformed(ActionEvent arg0) 
+				{
+					
+				BattleRunner.contestants[0]=BattleRunner.pokedex.get(dropdown.getSelectedIndex());
+				frame.dispose();
+				jOutput2();
+				
+				}
+			});
+		
+		frame.setVisible(true);
+		}
 }

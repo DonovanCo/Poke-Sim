@@ -9,6 +9,13 @@ public class BattleRunner {
 	static Pokemon[] contestants = new Pokemon[2];
 	static String outcome;
 	
+	static Pokemon FCus = new Blaziken();
+	static Pokemon FCusLeg = new Moltres();
+	static Pokemon GCus = new Torterra();
+	static Pokemon GCusLeg = new Virizion();
+	static Pokemon WCus = new Blastoise();
+	static Pokemon WCusLeg = new Kyogre();
+	
 	public static void makeList()
 	{
 		
@@ -157,12 +164,18 @@ public class BattleRunner {
 		int version = choice.nextInt();
 		if(version==1)
 		{
+			System.out.println("Do you wish to create a custom pokemon? (Y/N)");
+			String chooseCus = choice.next();
+			if(chooseCus.equals("Y"))
+				{
+				makeCus();
+				}
 			cheat  = getCodes();
 			runOne(cheat);
 		}
 		else if(version==2)
 		{
-			PicClass.jGetCodes();
+			PicClass.jAskCus();
 		}
 		else
 		{
@@ -172,17 +185,113 @@ public class BattleRunner {
 	
 	public static void makeCus()
 	{
-		
+		System.out.println("Will it be a legendary pokemon? (Y/N)");
+		String isLegCus = choice.next();
+		if(isLegCus.equals("Y"))
+			{
+			System.out.println("What type will it be?\n1.)Fire\n2.)Water\n3.)Grass");
+			String typeCus = choice.next();
+			if(typeCus.equals("Fire"))
+				{
+				FCusLeg.setType(typeCus.toLowerCase());
+				System.out.println("What will your pokemon's name be?");
+				String nameCus = choice.next();
+				FCusLeg.setName(nameCus);
+				System.out.println("What will "+nameCus+"'s cry be?");
+				String cryCus = choice.next();
+				FCusLeg.setCry(cryCus);
+				FCusLeg.setPic("unown.png");
+				pokedex.add(FCusLeg);
+				
+				}
+			else if(typeCus.equals("Water"))
+				{
+				WCusLeg.setType(typeCus.toLowerCase());
+				System.out.println("What will your pokemon's name be?");
+				String nameCus = choice.next();
+				WCusLeg.setName(nameCus);
+				System.out.println("What will "+nameCus+"'s cry be?");
+				String cryCus = choice.next();
+				WCusLeg.setCry(cryCus);
+				WCusLeg.setPic("unown.png");
+				pokedex.add(WCusLeg);
+				
+				}
+			else if(typeCus.equals("Grass"))
+				{
+				GCusLeg.setType(typeCus.toLowerCase());
+				System.out.println("What will your pokemon's name be?");
+				String nameCus = choice.next();
+				GCusLeg.setName(nameCus);
+				System.out.println("What will "+nameCus+"'s cry be?");
+				String cryCus = choice.next();
+				GCusLeg.setCry(cryCus);
+				GCusLeg.setPic("unown.png");
+				pokedex.add(GCusLeg);
+				
+				}
+			else
+				{
+				System.out.println("That is not an option.");
+				}
+			}
+		else if(isLegCus.equals("N"))
+			{
+			System.out.println("What type will it be?\n1.)Fire\n2.)Water\n3.)Grass");
+			String typeCus = choice.next();
+			if(typeCus.equals("Fire"))
+				{
+				FCus.setType(typeCus.toLowerCase());
+				System.out.println("What will your pokemon's name be?");
+				String nameCus = choice.next();
+				FCus.setName(nameCus);
+				System.out.println("What will "+nameCus+"'s cry be?");
+				String cryCus = choice.next();
+				FCus.setCry(cryCus);
+				FCus.setPic("unown.png");
+				pokedex.add(FCus);
+				
+				}
+			else if(typeCus.equals("Water"))
+				{
+				WCus.setType(typeCus.toLowerCase());
+				System.out.println("What will your pokemon's name be?");
+				String nameCus = choice.next();
+				WCus.setName(nameCus);
+				System.out.println("What will "+nameCus+"'s cry be?");
+				String cryCus = choice.next();
+				WCus.setCry(cryCus);
+				WCus.setPic("unown.png");
+				pokedex.add(WCus);
+				
+				}
+			else if(typeCus.equals("Grass"))
+				{
+				GCus.setType(typeCus.toLowerCase());
+				System.out.println("What will your pokemon's name be?");
+				String nameCus = choice.next();
+				GCus.setName(nameCus);
+				System.out.println("What will "+nameCus+"'s cry be?");
+				String cryCus = choice.next();
+				GCus.setCry(cryCus);
+				GCus.setPic("unown.png");
+				pokedex.add(GCus);
+				
+				}
+			else
+				{
+				System.out.println("That is not an option.");
+				}
+			}
+		else
+			{
+			System.out.println("That is not an option.");
+			}
 	}
 	
 	public static void main(String[] args) {
 		
-//		System.out.println("Do you wish to create a custom pokemon? (Y/N)");
-//		String chooseCus = choice.next();
-//		if(chooseCus.equals("Y"))
-//		{
-//			makeCus();
-//		}
+		
 		makeList();
 		askPref();
 		
