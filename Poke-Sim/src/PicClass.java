@@ -175,7 +175,7 @@ public class PicClass extends JFrame
 	public static void jResults()
 	{
 	final JFrame frame = new JFrame("Results");
-	frame.setSize(550, 650);
+	frame.setSize(550, 335);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setResizable(false);
 	frame.setLocationRelativeTo(null); //Sets JPanel to center of screen 

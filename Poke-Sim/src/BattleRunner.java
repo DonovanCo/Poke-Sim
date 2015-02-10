@@ -119,6 +119,7 @@ public class BattleRunner {
 		{
 			System.out.println("Both pokemon faint because they are equally matched!");
 		}
+		System.out.println(outcome);
 		
 	}
 	
@@ -169,11 +170,22 @@ public class BattleRunner {
 		}
 	}
 	
+	public static void makeCus()
+	{
+		
+	}
+	
 	public static void main(String[] args) {
 		
+//		System.out.println("Do you wish to create a custom pokemon? (Y/N)");
+//		String chooseCus = choice.next();
+//		if(chooseCus.equals("Y"))
+//		{
+//			makeCus();
+//		}
 		makeList();
 		askPref();
-		System.out.println(outcome);
+		
 		
 		
 
