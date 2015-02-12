@@ -9,7 +9,14 @@ import javax.swing.*;
 public class PicClass extends JFrame
 	{
 	
+	static Pokemon FCus = new Blaziken();
+	static Pokemon FCusLeg = new Moltres();
+	static Pokemon GCus = new Torterra();
+	static Pokemon GCusLeg = new Virizion();
+	static Pokemon WCus = new Blastoise();
+	static Pokemon WCusLeg = new Kyogre();
 	static int cheat = 0;
+	static boolean legendary = false;
 
 	public static void jOutput()
 		{
@@ -283,7 +290,7 @@ public class PicClass extends JFrame
 	public static void jAskCus()
 		{
 		final JFrame frame = new JFrame("Custom Pokemon Creator");
-		frame.setSize(400, 100);
+		frame.setSize(400, 80);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null); //Sets JPanel to center of screen 
@@ -302,9 +309,8 @@ public class PicClass extends JFrame
 			{
 			public void actionPerformed(ActionEvent arg0) 
 				{
-				jMakeCus();
+				jAskLegend();
 				frame.dispose();
-				
 				}
 			});
 		button2.addActionListener(new ActionListener()
@@ -320,39 +326,160 @@ public class PicClass extends JFrame
 		frame.setVisible(true);
 		}
 	
+	public static void jAskLegend()
+	{
+	final JFrame frame = new JFrame("Pokemon Creator");
+	frame.setSize(400, 70);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setResizable(false);
+	frame.setLocationRelativeTo(null); //Sets JPanel to center of screen 
+	
+	JButton button = new JButton("Yes");
+	JButton button1 = new JButton("No");
+	final JLabel words = new JLabel("Wll your new pokemon be legendary?");
+	
+	final JPanel panel = new JPanel();
+	panel.setBackground(Color.white);
+	frame.add(panel);
+	panel.add(words);
+	panel.add(button);
+	panel.add(button1);
+	button.addActionListener(new ActionListener()
+		{
+		public void actionPerformed(ActionEvent arg0) 
+			{
+			legendary = true;
+			frame.dispose();
+			jMakeCus();
+			
+			}
+		});
+	button1.addActionListener(new ActionListener()
+	{
+	public void actionPerformed(ActionEvent arg0) 
+		{
+		frame.dispose();
+		jMakeCus();
+		}
+	});
+	
+	frame.setVisible(true);
+	}
+	
 	public static void jMakeCus()
 		{
-		final JFrame frame = new JFrame("Pokemon Selector 1");
-		frame.setSize(400, 100);
+		final JFrame frame = new JFrame("Pokemon Creator");
+		frame.setSize(400, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		frame.setLocationRelativeTo(null); //Sets JPanel to center of screen 
-		
-		String[] preMadeArray = new String[BattleRunner.pokedex.size()];
-		for(int g  = 0; g<BattleRunner.pokedex.size(); g++)
-			{
-			preMadeArray[g] = BattleRunner.pokedex.get(g).getName(); 
-			}
+		frame.setLocationRelativeTo(null); //Sets JPanel to center of screen
+		String [] types = new String[] {"Fire", "Water", "Grass"};
 		
 		
-		JButton button = new JButton("Choose");
-		final JComboBox<String> dropdown = new JComboBox<String>(preMadeArray);
-		final JLabel words = new JLabel("Choose your pokemon.");
-		
+		JPanel smallPanel = new JPanel();
+		String [] typing = new String[] {"Fire", "Water", "Grass"};
+		smallPanel.setLayout(new BoxLayout(smallPanel, BoxLayout.Y_AXIS));
+		final JComboBox<String> dropdown = new JComboBox<String>(types);
+		JButton button = new JButton("Finish");
+		JLabel jName = new JLabel("Name:");
+		final JTextField nameText = new JTextField(15);
+		JLabel jCry = new JLabel("Cry:");
+		JLabel jType = new JLabel("Type:");
+		final JTextField cryText = new JTextField(15);
 		final JPanel panel = new JPanel();
 		panel.setBackground(Color.white);
 		frame.add(panel);
-		panel.add(words);
-		panel.add(dropdown);
+		smallPanel.add(jName);
+		smallPanel.add(jCry);
+		smallPanel.add(jType);
+		panel.add(smallPanel);
+		
+		smallPanel = new JPanel();
+		smallPanel.setLayout(new BoxLayout(smallPanel, BoxLayout.Y_AXIS));
+		smallPanel.add(nameText);
+		smallPanel.add(cryText);
+		smallPanel.add(dropdown);
+		panel.add(smallPanel);
 		panel.add(button);
 		button.addActionListener(new ActionListener()
 			{
 			public void actionPerformed(ActionEvent arg0) 
 				{
+				String jTypeCus = dropdown.getSelectedItem().toString();
+				if(legendary==true)
+				{
+				if(dropdown.getSelectedItem().equals("Fire"))
+					{
+					FCusLeg.setType(jTypeCus.toLowerCase());
+					String jNameCus = nameText.getText();
+					FCusLeg.setName(jNameCus);
+					String cryCus = cryText.getText();
+					FCusLeg.setCry(cryCus);
+					FCusLeg.setPic("unown.png");
+					BattleRunner.pokedex.add(FCusLeg);
 					
-				BattleRunner.contestants[0]=BattleRunner.pokedex.get(dropdown.getSelectedIndex());
+					}
+				else if(dropdown.getSelectedItem().equals("Water"))
+					{
+					WCusLeg.setType(jTypeCus.toLowerCase());
+					String nameCus = nameText.getText();
+					WCusLeg.setName(nameCus);
+					String cryCus = cryText.getText();
+					WCusLeg.setCry(cryCus);
+					WCusLeg.setPic("unown.png");
+					BattleRunner.pokedex.add(WCusLeg);
+					
+					}
+				else if(dropdown.getSelectedItem().equals("Grass"))
+					{
+					GCusLeg.setType(jTypeCus.toLowerCase());
+					String nameCus = nameText.getText();
+					GCusLeg.setName(nameCus);
+					String cryCus = cryText.getText();
+					GCusLeg.setCry(cryCus);
+					GCusLeg.setPic("unown.png");
+					BattleRunner.pokedex.add(GCusLeg);
+					
+					}
+				}
+			else if(legendary==false)
+				{
+				if(dropdown.getSelectedItem().equals("Fire"))
+					{
+					FCus.setType(jTypeCus.toLowerCase());
+					String nameCus = nameText.getText();
+					FCus.setName(nameCus);
+					String cryCus = cryText.getText();
+					FCus.setCry(cryCus);
+					FCus.setPic("unown.png");
+					BattleRunner.pokedex.add(FCus);
+					
+					}
+				else if(dropdown.getSelectedItem().equals("Water"))
+					{
+					WCus.setType(jTypeCus.toLowerCase());
+					String nameCus = nameText.getText();
+					WCus.setName(nameCus);
+					String cryCus = cryText.getText();
+					WCus.setCry(cryCus);
+					WCus.setPic("unown.png");
+					BattleRunner.pokedex.add(WCus);
+					
+					}
+				else if(dropdown.getSelectedItem().equals("Grass"))
+					{
+					GCus.setType(jTypeCus.toLowerCase());
+					String nameCus = nameText.getText();
+					GCus.setName(nameCus);
+					String cryCus = cryText.getText();
+					GCus.setCry(cryCus);
+					GCus.setPic("unown.png");
+					BattleRunner.pokedex.add(GCus);
+					
+					}
+				}
 				frame.dispose();
-				jOutput2();
+				jGetCodes();
 				
 				}
 			});

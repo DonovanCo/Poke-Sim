@@ -130,16 +130,6 @@ public class BattleRunner {
 		
 	}
 	
-	public static void makeCustom()
-	{
-		System.out.println("What will your pokemon,s name be?");
-		String nameCus = choice.next();
-		System.out.println("What will "+nameCus+",s cry be?");
-		String cryCus = choice.next();
-		System.out.println("Finally, what type is your pokemon? 1.)Fire 2.)Grass 3.)Water");
-		int typeCus = choice.nextInt();
-		
-	}
 	
 	public static int getCodes()
 	{
