@@ -38,7 +38,7 @@ public class PicClass extends JFrame
 		final JLabel words = new JLabel("Choose your pokemon.");
 		
 		final JPanel panel = new JPanel();
-		panel.setBackground(Color.white);
+		panel.setBackground(Color.pink);
 		frame.add(panel);
 		panel.add(words);
 		panel.add(dropdown);
